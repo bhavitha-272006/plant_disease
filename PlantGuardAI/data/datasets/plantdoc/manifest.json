@@ -1,0 +1,10 @@
+{
+  "dataset_name": "PlantDoc: A Dataset for Visual Plant Disease Detection in Natural Field Settings",
+  "official_source": "https://github.com/pratikkayal/PlantDoc-Dataset",
+  "publication": "Singh, Kayal et al., ACM CoNEXT 2020",
+  "total_classes": 29,
+  "total_images_in_full_dataset": 2598,
+  "field_setting": "In-situ field photographs with complex natural backgrounds, varying illumination, and occlusion",
+  "role_in_plantguard": "Field-domain robustness validation and transfer evaluation",
+  "classes_file": "classes.json"
+}

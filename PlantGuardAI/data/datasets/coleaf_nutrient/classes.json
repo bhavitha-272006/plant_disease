@@ -1,0 +1,72 @@
+[
+  {
+    "index": 0,
+    "class_id": "Healthy",
+    "nutrient": "Healthy (Optimal Nutrition)",
+    "symptom": "Uniform deep green foliage, robust lamina, no chlorosis or marginal necrosis",
+    "diagnostic_indicator": "Balanced chlorophyll a/b absorption"
+  },
+  {
+    "index": 1,
+    "class_id": "Nitrogen_N",
+    "nutrient": "Nitrogen (N) Deficiency",
+    "symptom": "General chlorosis starting on older leaves; pale green to yellowing; stunted leaf expansion",
+    "diagnostic_indicator": "Mobile nutrient depletion from basal to apical foliage"
+  },
+  {
+    "index": 2,
+    "class_id": "Phosphorus_P",
+    "nutrient": "Phosphorus (P) Deficiency",
+    "symptom": "Dull dark green foliage developing reddish, purple, or bronze anthocyanin pigmentation",
+    "diagnostic_indicator": "Abnormal anthocyanin accumulation in leaf margins"
+  },
+  {
+    "index": 3,
+    "class_id": "Potassium_K",
+    "nutrient": "Potassium (K) Deficiency",
+    "symptom": "Marginal chlorosis progressing into scorching and necrosis along leaf perimeter; tips curl downward",
+    "diagnostic_indicator": "Peripheral scorch with intact central blade"
+  },
+  {
+    "index": 4,
+    "class_id": "Calcium_Ca",
+    "nutrient": "Calcium (Ca) Deficiency",
+    "symptom": "Deformation, curling, and hooking of young emerging leaves; necrotic margins near leaf apex",
+    "diagnostic_indicator": "Immobile nutrient: symptoms localized on youngest apical foliage"
+  },
+  {
+    "index": 5,
+    "class_id": "Magnesium_Mg",
+    "nutrient": "Magnesium (Mg) Deficiency",
+    "symptom": "Pronounced interveinal chlorosis on mature leaves; veins remain dark green while blade yellows",
+    "diagnostic_indicator": "Contrasting interveinal pattern on older leaves"
+  },
+  {
+    "index": 6,
+    "class_id": "Iron_Fe",
+    "nutrient": "Iron (Fe) Chlorosis",
+    "symptom": "Severe interveinal chlorosis on newly emerging young upper leaves; blade turns pale yellow to ivory",
+    "diagnostic_indicator": "Rapid apical blanching with narrow green veins"
+  },
+  {
+    "index": 7,
+    "class_id": "Boron_B",
+    "nutrient": "Boron (B) Deficiency",
+    "symptom": "Brittle, thick, distorted leaves with death of apical buds; stunted lateral growth",
+    "diagnostic_indicator": "Meristematic necrosis and leaf brittleness"
+  },
+  {
+    "index": 8,
+    "class_id": "Manganese_Mn",
+    "nutrient": "Manganese (Mn) Deficiency",
+    "symptom": "Light green to yellow interveinal mottling with small necrotic speckles across blade",
+    "diagnostic_indicator": "Interveinal mottling and necrotic specks"
+  },
+  {
+    "index": 9,
+    "class_id": "Multiple_Deficiencies",
+    "nutrient": "Combined / Multiple Deficiencies",
+    "symptom": "Overlapping symptoms (e.g. N + K or Mg + Fe); complex chlorotic and necrotic patterns",
+    "diagnostic_indicator": "Compound deficiency matrix requiring laboratory tissue testing"
+  }
+]

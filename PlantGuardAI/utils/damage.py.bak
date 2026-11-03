@@ -1,0 +1,247 @@
+import cv2
+import numpy as np
+
+
+# ==========================================
+# PREPARE IMAGE
+# ==========================================
+
+def prepare_image(pil_img):
+
+    rgb = np.array(
+        pil_img.convert("RGB")
+    )
+
+    hsv = cv2.cvtColor(
+        rgb,
+        cv2.COLOR_RGB2HSV
+    )
+
+    return rgb, hsv
+
+
+# ==========================================
+# LEAF SEGMENTATION
+# ==========================================
+
+def get_leaf_mask(hsv):
+
+    lower = np.array([15, 25, 25])
+    upper = np.array([100, 255, 255])
+
+    mask = cv2.inRange(
+        hsv,
+        lower,
+        upper
+    )
+
+    kernel = cv2.getStructuringElement(
+        cv2.MORPH_ELLIPSE,
+        (5, 5)
+    )
+
+    mask = cv2.morphologyEx(
+        mask,
+        cv2.MORPH_OPEN,
+        kernel
+    )
+
+    close_kernel = cv2.getStructuringElement(
+        cv2.MORPH_ELLIPSE,
+        (15, 15)
+    )
+
+    mask = cv2.morphologyEx(
+        mask,
+        cv2.MORPH_CLOSE,
+        close_kernel
+    )
+
+    return mask
+
+
+# ==========================================
+# DAMAGE MASK
+# ==========================================
+
+def get_damage_mask(hsv, leaf_mask):
+
+    # Brown / reddish spots
+    brown = cv2.inRange(
+        hsv,
+        np.array([3, 35, 20]),
+        np.array([30, 255, 210])
+    )
+
+    # Very dark areas
+    dark = cv2.inRange(
+        hsv,
+        np.array([0, 0, 0]),
+        np.array([179, 255, 65])
+    )
+
+    damage = cv2.bitwise_or(
+        brown,
+        dark
+    )
+
+    damage = cv2.bitwise_and(
+        damage,
+        leaf_mask
+    )
+
+    kernel = cv2.getStructuringElement(
+        cv2.MORPH_ELLIPSE,
+        (3, 3)
+    )
+
+    damage = cv2.morphologyEx(
+        damage,
+        cv2.MORPH_OPEN,
+        kernel
+    )
+
+    damage = cv2.morphologyEx(
+        damage,
+        cv2.MORPH_CLOSE,
+        kernel
+    )
+
+    return damage
+
+
+# ==========================================
+# DAMAGE ANALYSIS
+# ==========================================
+
+def analyze_damage(pil_img):
+
+    rgb, hsv = prepare_image(pil_img)
+
+    leaf_mask = get_leaf_mask(hsv)
+
+    damage_mask = get_damage_mask(
+        hsv,
+        leaf_mask
+    )
+
+    leaf_pixels = cv2.countNonZero(
+        leaf_mask
+    )
+
+    damage_pixels = cv2.countNonZero(
+        damage_mask
+    )
+
+    if leaf_pixels == 0:
+
+        return 0.0, "Unknown", rgb.copy()
+
+    percentage = (
+        damage_pixels / leaf_pixels
+    ) * 100
+
+    percentage = round(
+        min(percentage, 100.0),
+        1
+    )
+
+    if percentage < 10:
+        severity = "Low"
+
+    elif percentage < 30:
+        severity = "Moderate"
+
+    else:
+        severity = "High"
+
+    # Generate heatmap
+    blurred = cv2.GaussianBlur(
+        damage_mask,
+        (31, 31),
+        0
+    )
+
+    heatmap = cv2.applyColorMap(
+        blurred,
+        cv2.COLORMAP_JET
+    )
+
+    heatmap = cv2.cvtColor(
+        heatmap,
+        cv2.COLOR_BGR2RGB
+    )
+
+    heatmap[leaf_mask == 0] = 0
+
+    return percentage, severity, heatmap
+
+
+# ==========================================
+# ANNOTATE DAMAGED REGIONS
+# ==========================================
+
+def annotate(pil_img):
+
+    rgb, hsv = prepare_image(pil_img)
+
+    leaf_mask = get_leaf_mask(hsv)
+
+    damage_mask = get_damage_mask(
+        hsv,
+        leaf_mask
+    )
+
+    output = rgb.copy()
+
+    contours, _ = cv2.findContours(
+        damage_mask,
+        cv2.RETR_EXTERNAL,
+        cv2.CHAIN_APPROX_SIMPLE
+    )
+
+    contours = sorted(
+        contours,
+        key=cv2.contourArea,
+        reverse=True
+    )
+
+    for contour in contours:
+
+        area = cv2.contourArea(contour)
+
+        if area < 20:
+            continue
+
+        x, y, w, h = cv2.boundingRect(
+            contour
+        )
+
+        cv2.drawContours(
+            output,
+            [contour],
+            -1,
+            (255, 0, 0),
+            2
+        )
+
+        cv2.rectangle(
+            output,
+            (x, y),
+            (x + w, y + h),
+            (255, 0, 0),
+            2
+        )
+
+        cv2.putText(
+            output,
+            "Possible Damage",
+            (x, max(y - 8, 15)),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.45,
+            (255, 0, 0),
+            1,
+            cv2.LINE_AA
+        )
+
+    return output

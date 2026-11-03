@@ -1,0 +1,114 @@
+{
+  "evaluation_timestamp": "2026-11-03 11:33:46",
+  "model_architecture": "MobileNetV2 (Transfer Learning, Rescaling[-1, 1])",
+  "dataset_name": "PlantVillage (Official 38-class raw/color)",
+  "num_classes": 38,
+  "training_summary": {
+    "epochs_completed": 5,
+    "training_time_seconds": 266.08,
+    "final_train_accuracy": 0.9429824352264404,
+    "final_val_accuracy": 0.902046799659729,
+    "splits": {
+      "train": 3192,
+      "val": 684,
+      "test": 684
+    }
+  },
+  "test_split_metrics": {
+    "test_accuracy": 0.8961988304093568,
+    "macro_precision": 0.8979773188130283,
+    "macro_recall": 0.8961988304093568,
+    "macro_f1_score": 0.8948126998966169,
+    "weighted_f1_score": 0.8948126998966172
+  },
+  "field_domain_validation": {
+    "field_evaluated": true,
+    "sample_count": 6,
+    "top1_accuracy": 0.3333333333333333,
+    "top3_accuracy": 0.5,
+    "detailed_results": [
+      {
+        "image": "Field_Potato leaf early blight__3023.jpg",
+        "ground_truth": "Potato___Early_blight",
+        "predicted_top1": "Grape___Black_rot",
+        "top1_confidence": 0.973711371421814,
+        "top1_correct": false,
+        "top3_correct": false,
+        "top3_classes": [
+          "Grape___Black_rot",
+          "Tomato___Late_blight",
+          "Squash___Powdery_mildew"
+        ]
+      },
+      {
+        "image": "Field_Potato leaf early blight__backus-056-potato-blight.jpg",
+        "ground_truth": "Potato___Early_blight",
+        "predicted_top1": "Corn_(maize)___Common_rust_",
+        "top1_confidence": 0.6698168516159058,
+        "top1_correct": false,
+        "top3_correct": false,
+        "top3_classes": [
+          "Corn_(maize)___Common_rust_",
+          "Tomato___Late_blight",
+          "Apple___Black_rot"
+        ]
+      },
+      {
+        "image": "Field_Tomato Early blight leaf__039b47d574bc4bb8a14259a1cd96a741.jpg",
+        "ground_truth": "Tomato___Early_blight",
+        "predicted_top1": "Strawberry___Leaf_scorch",
+        "top1_confidence": 0.4136536717414856,
+        "top1_correct": false,
+        "top3_correct": false,
+        "top3_classes": [
+          "Strawberry___Leaf_scorch",
+          "Corn_(maize)___Common_rust_",
+          "Corn_(maize)___healthy"
+        ]
+      },
+      {
+        "image": "Field_Tomato Early blight leaf__100983448.jpg",
+        "ground_truth": "Tomato___Early_blight",
+        "predicted_top1": "Tomato___Late_blight",
+        "top1_confidence": 0.8883354663848877,
+        "top1_correct": false,
+        "top3_correct": true,
+        "top3_classes": [
+          "Tomato___Late_blight",
+          "Tomato___Early_blight",
+          "Potato___Early_blight"
+        ]
+      },
+      {
+        "image": "Field_Tomato leaf late blight__110822-206-Tomato-blight.jpg",
+        "ground_truth": "Tomato___Late_blight",
+        "predicted_top1": "Tomato___Late_blight",
+        "top1_confidence": 0.9928883910179138,
+        "top1_correct": true,
+        "top3_correct": true,
+        "top3_classes": [
+          "Tomato___Late_blight",
+          "Potato___Late_blight",
+          "Strawberry___Leaf_scorch"
+        ]
+      },
+      {
+        "image": "Field_Tomato leaf late blight__18c.jpg",
+        "ground_truth": "Tomato___Late_blight",
+        "predicted_top1": "Tomato___Late_blight",
+        "top1_confidence": 0.9278050065040588,
+        "top1_correct": true,
+        "top3_correct": true,
+        "top3_classes": [
+          "Tomato___Late_blight",
+          "Potato___Late_blight",
+          "Pepper,_bell___Bacterial_spot"
+        ]
+      }
+    ]
+  },
+  "assets_generated": [
+    "assets/training_curves.png",
+    "assets/confusion_matrix.png"
+  ]
+}

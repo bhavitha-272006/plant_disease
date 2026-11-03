@@ -1,0 +1,270 @@
+{
+  "timestamp": "2026-11-03 13:29:09",
+  "test_images_count": 8143,
+  "num_classes": 38,
+  "baseline_model": {
+    "model_file": "trained_plantvillage_model.keras",
+    "training_images": 4560,
+    "test_accuracy": 0.912194522903107,
+    "macro_precision": 0.8837817957874797,
+    "macro_recall": 0.910692265988744,
+    "macro_f1_score": 0.8943301875549509,
+    "weighted_f1_score": 0.9124500479806245,
+    "evaluation_time_seconds": 115.86
+  },
+  "full_dataset_model": {
+    "model_file": "trained_plantvillage_full_model.keras",
+    "training_images": 54284,
+    "test_accuracy": 0.952597322853985,
+    "macro_precision": 0.9388216628028836,
+    "macro_recall": 0.9436828989990523,
+    "macro_f1_score": 0.9388770516845683,
+    "weighted_f1_score": 0.9529963024900424,
+    "evaluation_time_seconds": 122.63
+  },
+  "accuracy_improvement": 0.04040279995087803,
+  "f1_improvement": 0.040546254509417956,
+  "per_class_full": {
+    "Apple___Apple_scab": {
+      "precision": 0.90625,
+      "recall": 0.925531914893617,
+      "f1-score": 0.9157894736842105,
+      "support": 94.0
+    },
+    "Apple___Black_rot": {
+      "precision": 0.9782608695652174,
+      "recall": 0.967741935483871,
+      "f1-score": 0.972972972972973,
+      "support": 93.0
+    },
+    "Apple___Cedar_apple_rust": {
+      "precision": 0.9761904761904762,
+      "recall": 1.0,
+      "f1-score": 0.9879518072289156,
+      "support": 41.0
+    },
+    "Apple___healthy": {
+      "precision": 0.97165991902834,
+      "recall": 0.9795918367346939,
+      "f1-score": 0.975609756097561,
+      "support": 245.0
+    },
+    "Blueberry___healthy": {
+      "precision": 0.9826086956521739,
+      "recall": 1.0,
+      "f1-score": 0.9912280701754386,
+      "support": 226.0
+    },
+    "Cherry_(including_sour)___healthy": {
+      "precision": 0.9844961240310077,
+      "recall": 0.9921875,
+      "f1-score": 0.9883268482490273,
+      "support": 128.0
+    },
+    "Cherry_(including_sour)___Powdery_mildew": {
+      "precision": 0.9936305732484076,
+      "recall": 0.9873417721518988,
+      "f1-score": 0.9904761904761905,
+      "support": 158.0
+    },
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+      "precision": 0.6218487394957983,
+      "recall": 0.961038961038961,
+      "f1-score": 0.7551020408163265,
+      "support": 77.0
+    },
+    "Corn_(maize)___Common_rust_": {
+      "precision": 0.9888888888888889,
+      "recall": 0.994413407821229,
+      "f1-score": 0.9916434540389972,
+      "support": 179.0
+    },
+    "Corn_(maize)___healthy": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 174.0
+    },
+    "Corn_(maize)___Northern_Leaf_Blight": {
+      "precision": 0.9714285714285714,
+      "recall": 0.6891891891891891,
+      "f1-score": 0.8063241106719368,
+      "support": 148.0
+    },
+    "Grape___Black_rot": {
+      "precision": 0.9664804469273743,
+      "recall": 0.9774011299435028,
+      "f1-score": 0.9719101123595506,
+      "support": 177.0
+    },
+    "Grape___Esca_(Black_Measles)": {
+      "precision": 0.9853658536585366,
+      "recall": 0.9758454106280193,
+      "f1-score": 0.9805825242718447,
+      "support": 207.0
+    },
+    "Grape___healthy": {
+      "precision": 0.9552238805970149,
+      "recall": 1.0,
+      "f1-score": 0.9770992366412213,
+      "support": 64.0
+    },
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+      "precision": 1.0,
+      "recall": 0.9753086419753086,
+      "f1-score": 0.9875,
+      "support": 162.0
+    },
+    "Orange___Haunglongbing_(Citrus_greening)": {
+      "precision": 0.9939393939393939,
+      "recall": 0.9927360774818402,
+      "f1-score": 0.9933373712901272,
+      "support": 826.0
+    },
+    "Peach___Bacterial_spot": {
+      "precision": 1.0,
+      "recall": 0.9680232558139535,
+      "f1-score": 0.983751846381093,
+      "support": 344.0
+    },
+    "Peach___healthy": {
+      "precision": 0.9298245614035088,
+      "recall": 0.9814814814814815,
+      "f1-score": 0.954954954954955,
+      "support": 54.0
+    },
+    "Pepper,_bell___Bacterial_spot": {
+      "precision": 0.9324324324324325,
+      "recall": 0.92,
+      "f1-score": 0.9261744966442953,
+      "support": 150.0
+    },
+    "Pepper,_bell___healthy": {
+      "precision": 0.9559471365638766,
+      "recall": 0.9774774774774775,
+      "f1-score": 0.9665924276169265,
+      "support": 222.0
+    },
+    "Potato___Early_blight": {
+      "precision": 0.9673202614379085,
+      "recall": 0.9866666666666667,
+      "f1-score": 0.976897689768977,
+      "support": 150.0
+    },
+    "Potato___healthy": {
+      "precision": 1.0,
+      "recall": 0.782608695652174,
+      "f1-score": 0.8780487804878049,
+      "support": 23.0
+    },
+    "Potato___Late_blight": {
+      "precision": 0.9568345323741008,
+      "recall": 0.8866666666666667,
+      "f1-score": 0.9204152249134948,
+      "support": 150.0
+    },
+    "Raspberry___healthy": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9818181818181818,
+      "f1-score": 0.972972972972973,
+      "support": 55.0
+    },
+    "Soybean___healthy": {
+      "precision": 0.993455497382199,
+      "recall": 0.993455497382199,
+      "f1-score": 0.993455497382199,
+      "support": 764.0
+    },
+    "Squash___Powdery_mildew": {
+      "precision": 1.0,
+      "recall": 0.9963768115942029,
+      "f1-score": 0.9981851179673321,
+      "support": 276.0
+    },
+    "Strawberry___healthy": {
+      "precision": 0.9452054794520548,
+      "recall": 1.0,
+      "f1-score": 0.971830985915493,
+      "support": 69.0
+    },
+    "Strawberry___Leaf_scorch": {
+      "precision": 0.9880239520958084,
+      "recall": 0.9939759036144579,
+      "f1-score": 0.990990990990991,
+      "support": 166.0
+    },
+    "Tomato___Bacterial_spot": {
+      "precision": 0.8991097922848664,
+      "recall": 0.9498432601880877,
+      "f1-score": 0.9237804878048781,
+      "support": 319.0
+    },
+    "Tomato___Early_blight": {
+      "precision": 0.7028571428571428,
+      "recall": 0.82,
+      "f1-score": 0.7569230769230769,
+      "support": 150.0
+    },
+    "Tomato___healthy": {
+      "precision": 0.9458333333333333,
+      "recall": 0.9537815126050421,
+      "f1-score": 0.9497907949790795,
+      "support": 238.0
+    },
+    "Tomato___Late_blight": {
+      "precision": 0.9114391143911439,
+      "recall": 0.8666666666666667,
+      "f1-score": 0.8884892086330936,
+      "support": 285.0
+    },
+    "Tomato___Leaf_Mold": {
+      "precision": 0.8395061728395061,
+      "recall": 0.951048951048951,
+      "f1-score": 0.8918032786885246,
+      "support": 143.0
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "precision": 0.8938775510204081,
+      "recall": 0.8264150943396227,
+      "f1-score": 0.8588235294117647,
+      "support": 265.0
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "precision": 0.9109311740890689,
+      "recall": 0.896414342629482,
+      "f1-score": 0.9036144578313253,
+      "support": 251.0
+    },
+    "Tomato___Target_Spot": {
+      "precision": 0.8518518518518519,
+      "recall": 0.8761904761904762,
+      "f1-score": 0.863849765258216,
+      "support": 210.0
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "precision": 0.8166666666666667,
+      "recall": 0.875,
+      "f1-score": 0.8448275862068966,
+      "support": 56.0
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "precision": 0.9935483870967742,
+      "recall": 0.9577114427860697,
+      "f1-score": 0.9753008233058899,
+      "support": 804.0
+    },
+    "accuracy": 0.952597322853985,
+    "macro avg": {
+      "precision": 0.9388216628028836,
+      "recall": 0.9436828989990523,
+      "f1-score": 0.9388770516845683,
+      "support": 8143.0
+    },
+    "weighted avg": {
+      "precision": 0.9557239941520073,
+      "recall": 0.952597322853985,
+      "f1-score": 0.9529963024900424,
+      "support": 8143.0
+    }
+  }
+}

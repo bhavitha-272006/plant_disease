@@ -1,0 +1,306 @@
+[
+  {
+    "index": 0,
+    "name": "Apple___Apple_scab",
+    "plant": "Apple",
+    "disease": "Apple scab",
+    "type": "Fungal",
+    "causal_agent": "Venturia inaequalis"
+  },
+  {
+    "index": 1,
+    "name": "Apple___Black_rot",
+    "plant": "Apple",
+    "disease": "Black rot",
+    "type": "Fungal",
+    "causal_agent": "Botryosphaeria obtusa"
+  },
+  {
+    "index": 2,
+    "name": "Apple___Cedar_apple_rust",
+    "plant": "Apple",
+    "disease": "Cedar apple rust",
+    "type": "Fungal",
+    "causal_agent": "Gymnosporangium juniperi-virginianae"
+  },
+  {
+    "index": 3,
+    "name": "Apple___healthy",
+    "plant": "Apple",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 4,
+    "name": "Blueberry___healthy",
+    "plant": "Blueberry",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 5,
+    "name": "Cherry_(including_sour)___Powdery_mildew",
+    "plant": "Cherry",
+    "disease": "Powdery mildew",
+    "type": "Fungal",
+    "causal_agent": "Podosphaera clandestina"
+  },
+  {
+    "index": 6,
+    "name": "Cherry_(including_sour)___healthy",
+    "plant": "Cherry",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 7,
+    "name": "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+    "plant": "Corn",
+    "disease": "Gray leaf spot",
+    "type": "Fungal",
+    "causal_agent": "Cercospora zeae-maydis"
+  },
+  {
+    "index": 8,
+    "name": "Corn_(maize)___Common_rust_",
+    "plant": "Corn",
+    "disease": "Common rust",
+    "type": "Fungal",
+    "causal_agent": "Puccinia sorghi"
+  },
+  {
+    "index": 9,
+    "name": "Corn_(maize)___Northern_Leaf_Blight",
+    "plant": "Corn",
+    "disease": "Northern leaf blight",
+    "type": "Fungal",
+    "causal_agent": "Exserohilum turcicum"
+  },
+  {
+    "index": 10,
+    "name": "Corn_(maize)___healthy",
+    "plant": "Corn",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 11,
+    "name": "Grape___Black_rot",
+    "plant": "Grape",
+    "disease": "Black rot",
+    "type": "Fungal",
+    "causal_agent": "Guignardia bidwellii"
+  },
+  {
+    "index": 12,
+    "name": "Grape___Esca_(Black_Measles)",
+    "plant": "Grape",
+    "disease": "Esca (Black measles)",
+    "type": "Fungal complex",
+    "causal_agent": "Phaeomoniella chlamydospora"
+  },
+  {
+    "index": 13,
+    "name": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+    "plant": "Grape",
+    "disease": "Leaf blight",
+    "type": "Fungal",
+    "causal_agent": "Pseudocercospora clavispora"
+  },
+  {
+    "index": 14,
+    "name": "Grape___healthy",
+    "plant": "Grape",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 15,
+    "name": "Orange___Haunglongbing_(Citrus_greening)",
+    "plant": "Orange",
+    "disease": "Citrus greening (Huanglongbing)",
+    "type": "Bacterial",
+    "causal_agent": "Candidatus Liberibacter"
+  },
+  {
+    "index": 16,
+    "name": "Peach___Bacterial_spot",
+    "plant": "Peach",
+    "disease": "Bacterial spot",
+    "type": "Bacterial",
+    "causal_agent": "Xanthomonas arboricola"
+  },
+  {
+    "index": 17,
+    "name": "Peach___healthy",
+    "plant": "Peach",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 18,
+    "name": "Pepper,_bell___Bacterial_spot",
+    "plant": "Bell Pepper",
+    "disease": "Bacterial spot",
+    "type": "Bacterial",
+    "causal_agent": "Xanthomonas campestris"
+  },
+  {
+    "index": 19,
+    "name": "Pepper,_bell___healthy",
+    "plant": "Bell Pepper",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 20,
+    "name": "Potato___Early_blight",
+    "plant": "Potato",
+    "disease": "Early blight",
+    "type": "Fungal",
+    "causal_agent": "Alternaria solani"
+  },
+  {
+    "index": 21,
+    "name": "Potato___Late_blight",
+    "plant": "Potato",
+    "disease": "Late blight",
+    "type": "Oomycete",
+    "causal_agent": "Phytophthora infestans"
+  },
+  {
+    "index": 22,
+    "name": "Potato___healthy",
+    "plant": "Potato",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 23,
+    "name": "Raspberry___healthy",
+    "plant": "Raspberry",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 24,
+    "name": "Soybean___healthy",
+    "plant": "Soybean",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 25,
+    "name": "Squash___Powdery_mildew",
+    "plant": "Squash",
+    "disease": "Powdery mildew",
+    "type": "Fungal",
+    "causal_agent": "Podosphaera xanthii"
+  },
+  {
+    "index": 26,
+    "name": "Strawberry___Leaf_scorch",
+    "plant": "Strawberry",
+    "disease": "Leaf scorch",
+    "type": "Fungal",
+    "causal_agent": "Diplocarpon earlianum"
+  },
+  {
+    "index": 27,
+    "name": "Strawberry___healthy",
+    "plant": "Strawberry",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  },
+  {
+    "index": 28,
+    "name": "Tomato___Bacterial_spot",
+    "plant": "Tomato",
+    "disease": "Bacterial spot",
+    "type": "Bacterial",
+    "causal_agent": "Xanthomonas vesicatoria"
+  },
+  {
+    "index": 29,
+    "name": "Tomato___Early_blight",
+    "plant": "Tomato",
+    "disease": "Early blight",
+    "type": "Fungal",
+    "causal_agent": "Alternaria solani"
+  },
+  {
+    "index": 30,
+    "name": "Tomato___Late_blight",
+    "plant": "Tomato",
+    "disease": "Late blight",
+    "type": "Oomycete",
+    "causal_agent": "Phytophthora infestans"
+  },
+  {
+    "index": 31,
+    "name": "Tomato___Leaf_Mold",
+    "plant": "Tomato",
+    "disease": "Leaf mold",
+    "type": "Fungal",
+    "causal_agent": "Passalora fulva"
+  },
+  {
+    "index": 32,
+    "name": "Tomato___Septoria_leaf_spot",
+    "plant": "Tomato",
+    "disease": "Septoria leaf spot",
+    "type": "Fungal",
+    "causal_agent": "Septoria lycopersici"
+  },
+  {
+    "index": 33,
+    "name": "Tomato___Spider_mites Two-spotted_spider_mite",
+    "plant": "Tomato",
+    "disease": "Two-spotted spider mite",
+    "type": "Pest/Mite",
+    "causal_agent": "Tetranychus urticae"
+  },
+  {
+    "index": 34,
+    "name": "Tomato___Target_Spot",
+    "plant": "Tomato",
+    "disease": "Target spot",
+    "type": "Fungal",
+    "causal_agent": "Corynespora cassiicola"
+  },
+  {
+    "index": 35,
+    "name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "plant": "Tomato",
+    "disease": "Yellow leaf curl virus",
+    "type": "Viral",
+    "causal_agent": "TYLCV"
+  },
+  {
+    "index": 36,
+    "name": "Tomato___Tomato_mosaic_virus",
+    "plant": "Tomato",
+    "disease": "Mosaic virus",
+    "type": "Viral",
+    "causal_agent": "ToMV"
+  },
+  {
+    "index": 37,
+    "name": "Tomato___healthy",
+    "plant": "Tomato",
+    "disease": "Healthy",
+    "type": "Healthy",
+    "causal_agent": "None"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "dataset_name": "PlantVillage Dataset",
+  "official_source": "https://github.com/spMohanty/PlantVillage-Dataset",
+  "publication": "Hughes & Salathe, 2015; Mohanty et al., 2016",
+  "total_classes": 38,
+  "total_images_in_full_dataset": 54303,
+  "unique_crops_count": 14,
+  "healthy_classes_count": 12,
+  "diseased_classes_count": 26,
+  "classes_file": "classes.json"
+}

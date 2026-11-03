@@ -1,0 +1,9 @@
+{
+  "dataset_name": "CoLeaf-DB: Peruvian Coffee Leaf Images Dataset for Nutritional Deficiencies",
+  "official_source": "https://data.mendeley.com/datasets/brfgw46wzb/2",
+  "publication": "Tuesta-Monteza, Mejia-Cabrera, Arcila-Diaz, Data in Brief, 2023 (DOI: 10.1016/j.dib.2023.109226)",
+  "total_classes": 10,
+  "total_images_in_full_dataset": 1006,
+  "plant_species": "Coffea arabica (Catimor, Caturra, Borbon)",
+  "classes_file": "classes.json"
+}

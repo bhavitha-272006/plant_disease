@@ -1,0 +1,6 @@
+**/venv/
+**/__pycache__/
+*.pyc
+*.bak
+**/.vscode/
+PlantGuardAI/data/datasets/ip102_pest/ip102_v1.1.tar

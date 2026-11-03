@@ -1,0 +1,74 @@
+[
+  {
+    "target_name": "Aphids",
+    "ip102_index": 71,
+    "ip102_name": "aphids",
+    "crop": "Multi-crop / General"
+  },
+  {
+    "target_name": "Armyworm",
+    "ip102_index": 16,
+    "ip102_name": "paddy stem borer / armyworm",
+    "crop": "Rice / Cereals"
+  },
+  {
+    "target_name": "Beetles (Flea Beetles)",
+    "ip102_index": 82,
+    "ip102_name": "flea beetle",
+    "crop": "Vegetables"
+  },
+  {
+    "target_name": "Bollworm",
+    "ip102_index": 37,
+    "ip102_name": "bollworm",
+    "crop": "Cotton / Solanaceae"
+  },
+  {
+    "target_name": "Caterpillars (Leaf Roller)",
+    "ip102_index": 1,
+    "ip102_name": "rice leaf roller",
+    "crop": "Foliage crops"
+  },
+  {
+    "target_name": "Grasshoppers",
+    "ip102_index": 78,
+    "ip102_name": "locust / grasshopper",
+    "crop": "General foliage"
+  },
+  {
+    "target_name": "Leafhoppers",
+    "ip102_index": 12,
+    "ip102_name": "rice leafhopper",
+    "crop": "Rice / Vegetables"
+  },
+  {
+    "target_name": "Mites (Spider Mites)",
+    "ip102_index": 52,
+    "ip102_name": "red spider mite",
+    "crop": "Solanaceae / Fruit"
+  },
+  {
+    "target_name": "Sawfly",
+    "ip102_index": 65,
+    "ip102_name": "wheat sawfly",
+    "crop": "Cereals / Vegetables"
+  },
+  {
+    "target_name": "Stem Borer",
+    "ip102_index": 4,
+    "ip102_name": "asiatic rice borer",
+    "crop": "Rice / Corn"
+  },
+  {
+    "target_name": "Thrips",
+    "ip102_index": 13,
+    "ip102_name": "grain spreader thrips",
+    "crop": "Solanaceae / Cereals"
+  },
+  {
+    "target_name": "Whitefly",
+    "ip102_index": 72,
+    "ip102_name": "whitefly",
+    "crop": "Tomato / Cotton"
+  }
+]

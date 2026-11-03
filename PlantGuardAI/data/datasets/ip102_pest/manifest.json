@@ -1,0 +1,51 @@
+{
+  "dataset_name": "IP102: A Large-Scale Benchmark Dataset for Insect Pest Recognition",
+  "official_source": "https://github.com/xpwu95/IP102",
+  "publication": "Wu et al., CVPR 2019",
+  "total_classes": 102,
+  "total_images_in_full_dataset": 75222,
+  "classes_file": "classes.txt",
+  "target_12_subset_file": "target12_mapping.json",
+  "classes_sample": [
+    {
+      "index": 1,
+      "name": "rice leaf roller"
+    },
+    {
+      "index": 2,
+      "name": "rice leaf caterpillar"
+    },
+    {
+      "index": 3,
+      "name": "paddy stem maggot"
+    },
+    {
+      "index": 4,
+      "name": "asiatic rice borer"
+    },
+    {
+      "index": 5,
+      "name": "yellow rice borer"
+    },
+    {
+      "index": 6,
+      "name": "rice gall midge"
+    },
+    {
+      "index": 7,
+      "name": "Rice Stemfly"
+    },
+    {
+      "index": 8,
+      "name": "brown plant hopper"
+    },
+    {
+      "index": 9,
+      "name": "white backed plant hopper"
+    },
+    {
+      "index": 10,
+      "name": "small brown plant hopper"
+    }
+  ]
+}

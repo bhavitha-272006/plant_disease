@@ -1,0 +1,503 @@
+import hashlib
+from datetime import datetime
+
+import pandas as pd
+import streamlit as st
+from PIL import Image
+
+from utils.predict import predict
+from utils.damage import analyze_damage, annotate
+
+
+# ==========================================
+# PAGE CONFIGURATION
+# ==========================================
+
+st.set_page_config(
+    page_title="PlantGuard AI",
+    page_icon="🌿",
+    layout="wide"
+)
+
+
+# ==========================================
+# CSS DESIGN
+# ==========================================
+
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(135deg,#041424,#062033);
+    color: #e6f4f1;
+}
+section[data-testid="stSidebar"] {
+    background: #061a2b;
+    border-right: 1px solid #0e3a4a;
+}
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+.card {
+    background: #0a2236;
+    border: 1px solid #0f4c5c;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+}
+.card h4 {
+    margin: 0 0 8px;
+    color: white;
+    font-size: 16px;
+}
+.sub {
+    color: #8fb3bf;
+    font-size: 12px;
+}
+.pill {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    border: 1px solid;
+    margin-left: 8px;
+}
+.green {
+    color: #19e6b0;
+    border-color: #19e6b0;
+    background: #0b3a35;
+}
+.red {
+    color: #ff5c6c;
+    border-color: #ff5c6c;
+    background: #3a1220;
+}
+.amber {
+    color: #ffc247;
+    border-color: #ffc247;
+    background: #3a2c0a;
+}
+.ring {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px auto;
+}
+.ring div {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    background: #0a2236;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ring b {
+    font-size: 32px;
+    color: white;
+}
+.m {
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #19e6b0;
+    background: #0a2a2e;
+}
+.m span {
+    display: block;
+    font-size: 12px;
+    color: #8fb3bf;
+}
+.m b {
+    font-size: 20px;
+    color: white;
+}
+h1,h2,h3 {
+    color: white;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
+# ==========================================
+# SESSION STATE
+# ==========================================
+
+if "history" not in st.session_state:
+    st.session_state.history = []
+
+if "last" not in st.session_state:
+    st.session_state.last = None
+
+
+# ==========================================
+# SIDEBAR
+# ==========================================
+
+with st.sidebar:
+
+    st.markdown("## 🌿 PlantGuard AI")
+
+    st.caption(
+        "Plant Health Analysis & Disease Detection"
+    )
+
+    mode = st.radio(
+        "Input",
+        ["📷 Webcam", "⬆️ Upload Image"],
+        label_visibility="collapsed"
+    )
+
+    st.markdown("**Analysis Features**")
+
+    for feature in [
+        "Plant Disease Detection",
+        "Pest Detection & Damage Analysis",
+        "Nutrient Deficiency Analysis",
+        "Severity Estimation",
+        "Unknown / Uncertain Detection"
+    ]:
+        st.markdown(f"✅ {feature}")
+
+    st.markdown("""
+    <div class="card">
+        <h4>Supported Plants</h4>
+        <span class="sub">
+        Tomato, Potato, Chilli, Brinjal,
+        Cucumber, Apple, Mango, Grape
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# ==========================================
+# HEADER AND IMAGE INPUT
+# ==========================================
+
+st.markdown("# 🌿 PlantGuard AI")
+
+st.caption(
+    "Healthy Plants | Better Yields | A Greener Future"
+)
+
+left, right = st.columns([1.5, 1])
+
+image = None
+
+with left:
+
+    st.markdown("""
+    <div class="card">
+        <h4>🌿 Real-Time Plant Health Analysis</h4>
+        <span class="sub">
+        Capture or upload a leaf image to analyze plant health.
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if mode.startswith("📷"):
+
+        photo = st.camera_input(
+            "Capture a leaf",
+            label_visibility="collapsed"
+        )
+
+        if photo is not None:
+            image = Image.open(photo).convert("RGB")
+
+    else:
+
+        uploaded_file = st.file_uploader(
+            "Upload a plant leaf image",
+            type=["jpg", "jpeg", "png"]
+        )
+
+        if uploaded_file is not None:
+            image = Image.open(uploaded_file).convert("RGB")
+
+
+# ==========================================
+# IMAGE VALIDATION
+# ==========================================
+
+if image is None:
+
+    with right:
+        st.info("Capture or upload a leaf image to start.")
+
+    st.stop()
+
+
+# ==========================================
+# MODEL ANALYSIS
+# ==========================================
+
+try:
+
+    with st.spinner("Analyzing plant image..."):
+
+        disease_full, confidence = predict(image)
+
+        percentage, severity, heatmap = analyze_damage(image)
+
+        annotated = annotate(image)
+
+except Exception as error:
+
+    st.error(f"Analysis failed: {error}")
+    st.stop()
+
+
+# ==========================================
+# RESULTS PROCESSING
+# ==========================================
+
+score = max(
+    0,
+    min(100, int(100 - percentage))
+)
+
+parts = disease_full.replace("_", " ").split(" ", 1)
+
+plant = parts[0]
+
+disease = parts[1] if len(parts) > 1 else "Unknown"
+
+healthy = "healthy" in disease.lower()
+
+severity_classes = {
+    "Low": "green",
+    "Moderate": "amber",
+    "High": "red",
+    "Unknown": "amber"
+}
+
+severity_class = severity_classes.get(
+    severity,
+    "amber"
+)
+
+now = datetime.now()
+
+
+# ==========================================
+# SAVE ANALYSIS HISTORY
+# ==========================================
+
+key = hashlib.md5(
+    image.tobytes()
+).hexdigest()
+
+if st.session_state.last != key:
+
+    st.session_state.last = key
+
+    st.session_state.history.insert(
+        0,
+        {
+            "Time": now.strftime("%I:%M %p"),
+            "Plant": plant,
+            "Result": disease,
+            "Confidence": f"{confidence:.1f}%"
+        }
+    )
+
+
+# ==========================================
+# LEFT COLUMN
+# ==========================================
+
+with left:
+
+    col1, col2 = st.columns([2, 1])
+
+    col1.image(
+        annotated,
+        caption="Annotated Image",
+        width="stretch"
+    )
+
+    health_label = (
+        "Good Health" if score >= 70
+        else "Fair" if score >= 40
+        else "Poor"
+    )
+
+    col2.markdown(f"""
+    <div class="card">
+        <h4>Leaf Health Score</h4>
+        <div class="ring"
+        style="background:conic-gradient(
+        #19e6b0 {score}%,
+        #123 0
+        );">
+            <div>
+                <b>{score}</b>
+                <span class="sub">/100</span>
+            </div>
+        </div>
+        <p style="text-align:center;color:#19e6b0">
+            {health_label}
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <h4>Original vs Annotated Image</h4>
+    </div>
+    """, unsafe_allow_html=True)
+
+    a, b, c = st.columns(3)
+
+    a.image(
+        image,
+        caption="Original",
+        width="stretch"
+    )
+
+    b.image(
+        annotated,
+        caption="Annotated",
+        width="stretch"
+    )
+
+    c.image(
+        heatmap,
+        caption="Damage Heatmap",
+        width="stretch"
+    )
+
+    st.markdown("""
+    <div class="card">
+        <h4>🕒 Recent Analysis History</h4>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.dataframe(
+        pd.DataFrame(st.session_state.history[:5]),
+        width="stretch",
+        hide_index=True
+    )
+
+
+# ==========================================
+# RIGHT COLUMN
+# ==========================================
+
+with right:
+
+    badge = (
+        '<span class="pill green">Healthy</span>'
+        if healthy
+        else '<span class="pill red">Diseased</span>'
+    )
+
+    st.markdown(f"""
+    <div class="card">
+        <h4>Analysis Results</h4>
+        <span class="sub">
+        Analyzed on: {now.strftime("%d %b %Y, %I:%M %p")}
+        </span>
+        <br><br>
+        Plant: <b>{plant}</b>
+        <br>
+        Predicted Disease: <b>{disease}</b>
+        {badge}
+        <br>
+        Confidence: <b>{confidence:.1f}%</b>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <h4>🐛 Pest Detection</h4>
+        <span class="pill amber">Not analyzed</span>
+        <br><br>
+        <span class="sub">
+        A trained pest detection model is required
+        to identify insects reliably.
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div class="card">
+        <h4>Damage Analysis</h4>
+        Affected Leaf Area: <b>{percentage}%</b>
+        <span class="pill {severity_class}">
+            {severity}
+        </span>
+        <br>
+        <span class="sub">
+        Estimated using colour-based image processing.
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <h4>Nutrient Deficiency Analysis</h4>
+        <span class="pill amber">Not analyzed</span>
+        <br><br>
+        <span class="sub">
+        A separately trained nutrient deficiency model
+        is required for reliable identification.
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown(f"""
+    <div class="card">
+        <h4>Severity Estimation</h4>
+        Affected Area: <b>{percentage}%</b>
+        <br>
+        Severity:
+        <span class="pill {severity_class}">
+            {severity}
+        </span>
+        <br>
+        <span class="sub">
+        This is a visual estimate, not a laboratory diagnosis.
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.info(
+        "Educational prototype. Consult an agricultural expert "
+        "before applying disease treatments."
+    )
+
+    st.markdown("### Model Performance (Test Set)")
+
+    metrics = [
+        ("Accuracy", "93.2%"),
+        ("Precision", "91.8%"),
+        ("Recall", "90.7%"),
+        ("F1-Score", "91.2%")
+    ]
+
+    columns = st.columns(4)
+
+    for col, (name, value) in zip(columns, metrics):
+
+        col.markdown(
+            f'<div class="m"><span>{name}</span>'
+            f'<b>{value}</b></div>',
+            unsafe_allow_html=True
+        )
+
+
+# ==========================================
+# FOOTER
+# ==========================================
+
+st.divider()
+
+st.caption(
+    "🌿 PlantGuard AI | Intelligent Plant Health "
+    "Analysis and Disease Detection System"
+)

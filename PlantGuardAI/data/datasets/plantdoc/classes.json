@@ -1,0 +1,176 @@
+[
+  {
+    "index": 0,
+    "name": "Apple Scab Leaf",
+    "crop": "Apple",
+    "condition": "Apple scab"
+  },
+  {
+    "index": 1,
+    "name": "Apple leaf",
+    "crop": "Apple",
+    "condition": "Healthy"
+  },
+  {
+    "index": 2,
+    "name": "Apple rust leaf",
+    "crop": "Apple",
+    "condition": "Cedar apple rust"
+  },
+  {
+    "index": 3,
+    "name": "Bell_pepper leaf spot",
+    "crop": "Bell Pepper",
+    "condition": "Bacterial spot"
+  },
+  {
+    "index": 4,
+    "name": "Bell_pepper leaf",
+    "crop": "Bell Pepper",
+    "condition": "Healthy"
+  },
+  {
+    "index": 5,
+    "name": "Blueberry leaf",
+    "crop": "Blueberry",
+    "condition": "Healthy"
+  },
+  {
+    "index": 6,
+    "name": "Cherry leaf",
+    "crop": "Cherry",
+    "condition": "Healthy"
+  },
+  {
+    "index": 7,
+    "name": "Corn Gray leaf spot",
+    "crop": "Corn",
+    "condition": "Gray leaf spot"
+  },
+  {
+    "index": 8,
+    "name": "Corn leaf blight",
+    "crop": "Corn",
+    "condition": "Leaf blight"
+  },
+  {
+    "index": 9,
+    "name": "Corn rust leaf",
+    "crop": "Corn",
+    "condition": "Common rust"
+  },
+  {
+    "index": 10,
+    "name": "Peach leaf",
+    "crop": "Peach",
+    "condition": "Healthy"
+  },
+  {
+    "index": 11,
+    "name": "Potato leaf early blight",
+    "crop": "Potato",
+    "condition": "Early blight"
+  },
+  {
+    "index": 12,
+    "name": "Potato leaf late blight",
+    "crop": "Potato",
+    "condition": "Late blight"
+  },
+  {
+    "index": 13,
+    "name": "Potato leaf",
+    "crop": "Potato",
+    "condition": "Healthy"
+  },
+  {
+    "index": 14,
+    "name": "Raspberry leaf",
+    "crop": "Raspberry",
+    "condition": "Healthy"
+  },
+  {
+    "index": 15,
+    "name": "Soyabean leaf",
+    "crop": "Soybean",
+    "condition": "Healthy"
+  },
+  {
+    "index": 16,
+    "name": "Squash Powdery mildew leaf",
+    "crop": "Squash",
+    "condition": "Powdery mildew"
+  },
+  {
+    "index": 17,
+    "name": "Strawberry leaf",
+    "crop": "Strawberry",
+    "condition": "Healthy"
+  },
+  {
+    "index": 18,
+    "name": "Tomato Early blight leaf",
+    "crop": "Tomato",
+    "condition": "Early blight"
+  },
+  {
+    "index": 19,
+    "name": "Tomato Septoria leaf spot",
+    "crop": "Tomato",
+    "condition": "Septoria leaf spot"
+  },
+  {
+    "index": 20,
+    "name": "Tomato leaf bacterial spot",
+    "crop": "Tomato",
+    "condition": "Bacterial spot"
+  },
+  {
+    "index": 21,
+    "name": "Tomato leaf late blight",
+    "crop": "Tomato",
+    "condition": "Late blight"
+  },
+  {
+    "index": 22,
+    "name": "Tomato leaf mosaic virus",
+    "crop": "Tomato",
+    "condition": "Mosaic virus"
+  },
+  {
+    "index": 23,
+    "name": "Tomato leaf yellow virus",
+    "crop": "Tomato",
+    "condition": "Yellow leaf curl virus"
+  },
+  {
+    "index": 24,
+    "name": "Tomato leaf",
+    "crop": "Tomato",
+    "condition": "Healthy"
+  },
+  {
+    "index": 25,
+    "name": "Tomato mold leaf",
+    "crop": "Tomato",
+    "condition": "Leaf mold"
+  },
+  {
+    "index": 26,
+    "name": "Tomato two spotted spider mites leaf",
+    "crop": "Tomato",
+    "condition": "Two-spotted spider mite"
+  },
+  {
+    "index": 27,
+    "name": "grape leaf black rot",
+    "crop": "Grape",
+    "condition": "Black rot"
+  },
+  {
+    "index": 28,
+    "name": "grape leaf",
+    "crop": "Grape",
+    "condition": "Healthy"
+  }
+]

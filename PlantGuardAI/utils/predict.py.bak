@@ -1,0 +1,128 @@
+import json
+import numpy as np
+import tensorflow as tf
+
+from pathlib import Path
+from PIL import Image
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MODEL_PATH = BASE_DIR / "models" / "plant_model.keras"
+CLASS_PATH = BASE_DIR / "models" / "class_names.json"
+
+_model = None
+_classes = None
+
+# Set this after evaluating your model on validation data.
+CONFIDENCE_THRESHOLD = 60.0
+
+
+def load_model():
+
+    global _model, _classes
+
+    if _model is None:
+
+        if not MODEL_PATH.exists():
+            raise FileNotFoundError(
+                f"Model not found: {MODEL_PATH}"
+            )
+
+        _model = tf.keras.models.load_model(
+            str(MODEL_PATH),
+            compile=False
+        )
+
+    if _classes is None:
+
+        if not CLASS_PATH.exists():
+            raise FileNotFoundError(
+                f"Class file not found: {CLASS_PATH}"
+            )
+
+        with open(CLASS_PATH, "r", encoding="utf-8") as f:
+            _classes = json.load(f)
+
+        if isinstance(_classes, dict):
+            _classes = [
+                name for name, index in sorted(
+                    _classes.items(),
+                    key=lambda item: int(item[1])
+                )
+            ]
+
+        if not isinstance(_classes, list):
+            raise ValueError("Invalid class_names.json format")
+
+    output_shape = _model.output_shape
+
+    if isinstance(output_shape, list):
+        output_shape = output_shape[0]
+
+    model_classes = output_shape[-1]
+
+    if model_classes != len(_classes):
+        raise ValueError(
+            f"Model has {model_classes} output classes, "
+            f"but JSON contains {len(_classes)} classes."
+        )
+
+    return _model, _classes
+
+
+def predict(image):
+
+    model, classes = load_model()
+
+    input_shape = model.input_shape
+
+    if isinstance(input_shape, list):
+        input_shape = input_shape[0]
+
+    height = input_shape[1] or 224
+    width = input_shape[2] or 224
+
+    image = image.convert("RGB")
+    image = image.resize((width, height))
+
+    arr = np.asarray(image, dtype=np.float32)
+
+    # This assumes the model was trained with /255 scaling.
+    arr = arr / 255.0
+
+    arr = np.expand_dims(arr, axis=0)
+
+    raw = model.predict(arr, verbose=0)
+    scores = np.asarray(raw).reshape(-1)
+
+    # Convert logits to probabilities if necessary.
+    if (
+        np.any(scores < 0)
+        or not np.isclose(scores.sum(), 1.0, atol=0.01)
+    ):
+        scores = tf.nn.softmax(scores).numpy()
+
+    index = int(np.argmax(scores))
+
+    confidence = float(scores[index] * 100)
+
+    if confidence < CONFIDENCE_THRESHOLD:
+        return "Unknown___Uncertain", confidence
+
+    predicted_class = classes[index]
+
+    # Expected format: Plant___Disease
+    if "___" in predicted_class:
+        plant, disease = predicted_class.split("___", 1)
+    else:
+        parts = predicted_class.split("_", 1)
+        plant = parts[0]
+        disease = parts[1] if len(parts) > 1 else "Unknown"
+
+    print("\n========== PREDICTION ==========")
+    print("Plant:", plant)
+    print("Disease:", disease)
+    print("Confidence:", round(confidence, 2), "%")
+    print("================================\n")
+
+    return predicted_class, confidence
