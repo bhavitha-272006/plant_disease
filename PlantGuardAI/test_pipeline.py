@@ -124,6 +124,54 @@ assert "Pending Training (IP102 Dataset" in json_str
 assert "Pending Training (CoLeaf Dataset" in json_str
 print("Test 5 Passed: Audit report conforms to scientific integrity specifications.")
 
+# TEST 6: Universal Leaf Specimen Suitability Gate & OOD Safeguards
+print("\n--- TEST 6: Universal Leaf Specimen Suitability Gate & OOD Safeguards ---")
+
+# 6A: Valid single leaf
+pred_valid = predict_plant_disease(img, specimen_type="Single leaf")
+assert pred_valid["is_blocked"] is False
+assert pred_valid["confidence"] > 0.0
+assert pred_valid["suitability_status"] == "VALID_LEAF_SPECIMEN"
+print("  6A Passed: Single leaf specimen permitted for genuine disease classification.")
+
+# 6B: Declared Fruit -> Blocked
+pred_fruit = predict_plant_disease(img, specimen_type="Fruit")
+assert pred_fruit["is_blocked"] is True
+assert pred_fruit["confidence"] == 0.0
+assert pred_fruit["suitability_status"] == "NON_LEAF_ORGAN"
+assert "Fruit" in pred_fruit["suitability_reason"]
+print("  6B Passed: Fruit specimen category strictly blocked from disease classification.")
+
+# 6C: Declared Whole plant / canopy -> Blocked
+pred_canopy = predict_plant_disease(img, specimen_type="Whole plant / canopy")
+assert pred_canopy["is_blocked"] is True
+assert pred_canopy["confidence"] == 0.0
+assert pred_canopy["suitability_status"] == "NON_LEAF_ORGAN"
+print("  6C Passed: Whole plant / canopy specimen strictly blocked.")
+
+# 6D: Declared Stem / flower / root -> Blocked
+pred_stem = predict_plant_disease(img, specimen_type="Stem / flower / root")
+assert pred_stem["is_blocked"] is True
+assert pred_stem["confidence"] == 0.0
+assert pred_stem["suitability_status"] == "NON_LEAF_ORGAN"
+print("  6D Passed: Stem / flower / root specimen strictly blocked.")
+
+# 6E: Declared Not sure -> Blocked
+pred_notsure = predict_plant_disease(img, specimen_type="Not sure")
+assert pred_notsure["is_blocked"] is True
+assert pred_notsure["confidence"] == 0.0
+assert pred_notsure["suitability_status"] == "UNCERTAIN_SPECIMEN"
+print("  6E Passed: Unconfirmed specimen category strictly blocked.")
+
+# 6F: Non-leaf blank background image with Single leaf declared -> Optical Gate Blocks
+blank_test_img = Image.new("RGB", (224, 224), (200, 200, 200))
+pred_blank = predict_plant_disease(blank_test_img, specimen_type="Single leaf")
+assert pred_blank["is_blocked"] is True
+assert pred_blank["suitability_status"] == "UNSUITABLE_IMAGE"
+print("  6F Passed: Optical gate autonomously blocks non-foliar blank/background image.")
+
+print("Test 6 Passed: Universal specimen suitability gate and OOD safeguards verified across all categories.")
+
 print("\n" + "=" * 60)
-print(">>> ALL 5 VERIFICATION TESTS PASSED SUCCESSFULLY! <<<")
+print(">>> ALL 6 VERIFICATION TESTS PASSED SUCCESSFULLY! <<<")
 print("=" * 60)

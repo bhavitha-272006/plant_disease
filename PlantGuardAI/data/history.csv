@@ -1,4 +1,8 @@
 Timestamp,Plant,Disease,Confidence,Severity_Level,Affected_Area_Pct,Is_Healthy,Is_Uncertain,Time,Result
+2026-11-03 21:48:40,Strawberry,Leaf Scorch,58.7%,Severe,41.0%,False,True,,
+2026-11-03 21:27:17,Strawberry,Leaf Scorch,99.8%,Severe,39.9%,False,False,,
+2026-11-03 21:25:33,Apple,Apple Scab,99.9%,Moderate,14.2%,False,False,,
+2026-11-03 20:57:33,Apple,Apple Scab,99.3%,Mild,1.6%,False,False,,
 2026-11-03 13:55:55,Apple,Apple Scab,29.2%,Severe,34.0%,False,True,,
 2026-11-03 13:54:39,Mango,Healthy Foliage (No Pathogen Detected),98.1%,Moderate,24.5%,True,True,,
 2026-11-03 13:52:57,Mango,Anthracnose,96.8%,Moderate,29.7%,False,True,,
